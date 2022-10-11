@@ -13,7 +13,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const box = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const material = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 0.1, linecap: 'round', linejoin: 'round' });
 
 const mesh = new THREE.Mesh(box, material);
 console.log(mesh);
@@ -22,8 +22,15 @@ scene.add(mesh);
 
 cam.position.z = 5;
 
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, cam);
 
-renderer.render(scene, cam);
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.01;
 
+}
+
+animate();
 
 
