@@ -13,7 +13,7 @@ const material = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 0.1, 
 const boxMesh = new THREE.Mesh(box, material);
 
 const plane = new THREE.PlaneGeometry(5, 5, 10, 10);
-const planeMat = new THREE.LineBasicMaterial({ color: 0xff0000, linewidth: 0.1, linecap: 'round', linejoin: 'round' });
+const planeMat = new THREE.LineBasicMaterial({ color: 0xff0000, side: THREE.DoubleSide });
 const planeMesh = new THREE.Mesh(plane, planeMat);
 
 console.log()
