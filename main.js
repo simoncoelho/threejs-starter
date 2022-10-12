@@ -8,30 +8,26 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.body.appendChild(renderer.domElement);
 
-const box = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 0.1, linecap: 'round', linejoin: 'round' });
-const boxMesh = new THREE.Mesh(box, material);
-
 const plane = new THREE.PlaneGeometry(5, 5, 10, 10);
-const planeMat = new THREE.LineBasicMaterial({ color: 0xff0000, side: THREE.DoubleSide });
+const planeMat = new THREE.MeshPhongMaterial({ color: 0xff0000, side: THREE.DoubleSide });
 const planeMesh = new THREE.Mesh(plane, planeMat);
+
+const light = new THREE.DirectionalLight(0xffffff, 1, 100);
+light.position.set(0, 0, 1);
 
 console.log()
 
+scene.add(light);
 scene.add(planeMesh);
-scene.add(boxMesh);
 
 cam.position.z = 5;
 
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, cam);
-
-    boxMesh.rotation.x += 0.01;
-    boxMesh.rotation.y += 0.01;
-
+    
     planeMesh.rotation.x += 0.01;
-    planeMesh.rotation.y += 0.01;
+    //planeMesh.rotation.y += 0.01;
 }
 
 animate();
